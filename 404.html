@@ -1,1 +1,6 @@
-<!doctype html><html lang="fr"><meta charset="utf-8"><title>Mes Droits BEL</title><script>location.replace('/mes-droits-bel-web/?__bel_path='+encodeURIComponent(location.pathname+location.search+location.hash));</script><a href="/mes-droits-bel-web/">Ouvrir Mes Droits BEL</a></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Mes Droits BEL</title></head><body><p id="loading">Chargement de Mes Droits BEL…</p><script>
+const base='/mes-droits-bel-web/';const path=location.pathname;
+const template=path.startsWith(base+'info/')?'info/%5Bslug%5D.html':path.startsWith(base+'agreement/')?'agreement/%5Bid%5D.html':null;
+if(template){fetch(base+template).then(r=>{if(!r.ok)throw Error('Page indisponible');return r.text()}).then(html=>{document.open();document.write(html);document.close()}).catch(()=>{document.getElementById('loading').textContent='Cette page est indisponible. Revenez à l’accueil.'})}
+else location.replace(base);
+</script><noscript><a href="/mes-droits-bel-web/">Ouvrir Mes Droits BEL</a></noscript></body></html>
